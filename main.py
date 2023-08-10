@@ -17,7 +17,7 @@ class DrawInformation:
     GRADIENTS = [(128, 128, 128), (160, 160, 160), (192, 192, 192)]
 
     # FONTS
-    FONT = pygame.font.SysFont("consolas", 20)
+    FONT = pygame.font.SysFont("consolas", 15)
 
     # PADS SIZE
     SIDE_PAD = 100

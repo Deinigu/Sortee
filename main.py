@@ -11,6 +11,7 @@ class DrawInformation:
     BLACK = 0, 0, 0
     WHITE = 255, 255, 255
     GREEN = 0, 255, 0
+    YELLOW = 255,255,0
     RED = 255, 0, 0
     BACKGROUND_COLOR = BLACK
 
@@ -74,6 +75,7 @@ def draw(draw_info, algo_name, ascending):
 
     # Draws the list
     draw_list(draw_info)
+
     pygame.display.update()
 
 
@@ -106,6 +108,16 @@ def draw_list(draw_info, color_positions={}, clear_bg=False):
     if clear_bg:
         pygame.display.update()
 
+
+# Draws the state of the sorting variable
+def draw_state(draw_info, sorting, clear_bg=False):
+    print(sorting)
+    if sorting == True:
+        status = draw_info.FONT.render("Sorting...", 1, draw_info.YELLOW)
+        draw_info.window.blit(status, (draw_info.width / 2 - status.get_width() / 2, 115))
+
+    if clear_bg:
+        pygame.display.update()
 
 # Returns a list with n random values going from min_val to max_val
 def generate_starting_list(n, min_val, max_val):
@@ -212,7 +224,7 @@ def main():
     sorting_algortihm_generator = None
 
     while run:
-        clock.tick(120)
+        clock.tick(60)
 
         if sorting:
             try:
@@ -236,11 +248,13 @@ def main():
             if event.key == pygame.K_n and not sorting:
                 lst = generate_starting_list(n, min_val, max_val)
                 draw_info.set_lst(lst)
+                pygame.display.update()
 
             # Init sorting
             elif event.key == pygame.K_SPACE and not sorting:
                 sorting = True
                 sorting_algortihm_generator = sorting_algorithm(draw_info, ascending)
+                draw_state(draw_info, sorting, True)
 
             # Stops sorting
             elif event.key == pygame.K_SPACE and sorting:

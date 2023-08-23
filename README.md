@@ -10,7 +10,7 @@ A visual application designed to visualize the different sorting algorithms made
   ```
 * Random package
 ```sh
-pip install random
+  pip install random
 ```
 * Math package
 ```sh

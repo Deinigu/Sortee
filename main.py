@@ -109,9 +109,10 @@ def draw_list(draw_info, color_positions={}, clear_bg=False):
 
 # Returns a list with n random values going from min_val to max_val
 def generate_starting_list(n, min_val, max_val):
-    lst = random.sample(range(min_val,max_val),n)
+    lst = random.sample(range(min_val, max_val), n)
 
     return lst
+
 
 # Bubble Sort
 def bubble_sort(draw_info, ascending=True):
@@ -131,6 +132,7 @@ def bubble_sort(draw_info, ascending=True):
                 # Generator yield (waits for the get method)
                 yield True
     return lst
+
 
 # Insertion Sort
 def insertion_sort(draw_info, ascending=True):
@@ -157,15 +159,15 @@ def insertion_sort(draw_info, ascending=True):
             yield True
     return lst
 
+
 # Selection Sort
 def selectionSort(draw_info, ascending):
-    
     array = draw_info.lst
     size = len(array)
-    
+
     for ind in range(size):
         min_index = ind
- 
+
         for j in range(ind + 1, size):
             if ascending == True:
                 # select the minimum element in every iteration
@@ -174,15 +176,16 @@ def selectionSort(draw_info, ascending):
             elif ascending == False:
                 if array[j] > array[min_index]:
                     min_index = j
-                            
+
             # Draw this bar with colors
             draw_list(draw_info, {ind: draw_info.GREEN, j: draw_info.RED}, True)
 
             # Generator yield (waits for the get method)
             yield True
-         # swapping the elements to sort the array
+        # swapping the elements to sort the array
         (array[ind], array[min_index]) = (array[min_index], array[ind])
     return array
+
 
 # Main loop
 def main():
@@ -192,7 +195,7 @@ def main():
     # Variables for the generation of the list
     n = 100
     min_val = 0
-    max_val = 100
+    max_val = n
 
     # Initialize list
     lst = generate_starting_list(n, min_val, max_val)
@@ -238,7 +241,7 @@ def main():
             elif event.key == pygame.K_SPACE and not sorting:
                 sorting = True
                 sorting_algortihm_generator = sorting_algorithm(draw_info, ascending)
-            
+
             # Stops sorting
             elif event.key == pygame.K_SPACE and sorting:
                 sorting = False

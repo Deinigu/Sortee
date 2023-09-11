@@ -111,7 +111,6 @@ def draw_list(draw_info, color_positions={}, clear_bg=False):
 
 # Draws the state of the sorting variable
 def draw_state(draw_info, sorting, clear_bg=False):
-    print(sorting)
     if sorting == True:
         status = draw_info.FONT.render("Sorting...", 1, draw_info.YELLOW)
         draw_info.window.blit(status, (draw_info.width / 2 - status.get_width() / 2, 115))
